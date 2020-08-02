@@ -1,7 +1,10 @@
+import AppLayout from 'components/AppLayout';
 export default function Home() {
 	return (
-		<div>
-			<h1>Next App</h1>
-		</div>
+		<>
+			<AppLayout>
+				<div>devter</div>
+			</AppLayout>
+		</>
 	);
 }
