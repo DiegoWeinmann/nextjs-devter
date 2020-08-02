@@ -36,6 +36,17 @@ export default css`
 		width: 100%;
 	}
 
+	& :global(svg) {
+		color: ${colors.primary};
+		width: 40px;
+		height: 40px;
+		display: inline-block;
+	}
+
+	h1 {
+		display: inline-block;
+	}
+
 	@media (min-width: ${breakpoints.mobile}) {
 		main {
 			height: 90vh;
