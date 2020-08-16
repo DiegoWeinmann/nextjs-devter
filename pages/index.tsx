@@ -6,10 +6,10 @@ import { Button } from 'components/Button'
 import { colors } from 'styles/theme'
 
 import { loginWithGithub, onAuthStateChanged } from 'firebase/client'
+import { Avatar } from 'components/Avatar'
 
 export default function Home() {
   const [user, setUser] = useState<User | null>(null)
-  console.log(user)
   const handleClick = () => {
     loginWithGithub()
   }
@@ -36,7 +36,16 @@ export default function Home() {
               Login with Github
             </Button>
           )}
-          {user && <div>{user.email}</div>}
+          {user && user.avatar && (
+            <div className='avatar'>
+              <Avatar
+                src={user.avatar}
+                alt={user.username}
+                text={user.email}
+                withText
+              />
+            </div>
+          )}
         </section>
       </AppLayout>
       <style jsx>{`
