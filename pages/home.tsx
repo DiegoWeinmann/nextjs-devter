@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AppLayout } from 'components/AppLayout'
-import { Avatar } from 'components/Avatar'
+import { Devit } from 'components/Devit'
 
 export default function Home() {
   const [timeline, setTimeline] = useState<Timeline>([])
@@ -23,20 +23,24 @@ export default function Home() {
           </header>
           <section>
             {timeline.map(devit => (
-              <article key={devit.id}>
-                <Avatar alt={devit.username} src={devit.avatar} />
-              </article>
+              <Devit key={devit.id} devit={devit} />
             ))}
           </section>
           <nav></nav>
         </div>
       </AppLayout>
       <style jsx>{`
+        div {
+          padding-top: 49px;
+          padding-bottom: 49px;
+          height: 100%;
+        }
+
         header {
           display: flex;
           align-items: center;
           height: 49px;
-          position: fixed;
+          position: sticky;
           top: 0;
           border-bottom: 1px solid #ccc;
           width: 100%;
@@ -49,7 +53,7 @@ export default function Home() {
 
         nav {
           height: 49px;
-          position: fixed;
+          position: absolute;
           bottom: 0;
           border-top: 1px solid #ccc;
           width: 100%;
