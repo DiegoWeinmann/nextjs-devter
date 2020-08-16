@@ -1,3 +1,7 @@
 {
-  "window.title": "${activeEditorShort}"
+  "window.title": "${activeEditorShort}",
+  "[typescriptreact, typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
 }
