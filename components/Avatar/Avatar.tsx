@@ -3,8 +3,8 @@ import styles from './styles.module.css'
 interface AvatarProps {
   src: string
   alt: string
-  text: string
-  withText: boolean
+  text?: string
+  withText?: boolean
 }
 
 export const Avatar = ({

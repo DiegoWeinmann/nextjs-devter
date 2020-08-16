@@ -3,5 +3,7 @@
   "[typescriptreact, typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
-  }
+  },
+  "auto-close-tag.enableAutoCloseSelfClosingTag": true,
+  "auto-close-tag.fullMode": true
 }

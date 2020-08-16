@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <AppLayout>
         <section>
-          <DevterIcon />
+          <DevterIcon fill={colors.primary} width='300' />
           <h1>devter</h1>
           <h2>Talk about development with developers 🙂🙂</h2>
           {!user && (
@@ -58,6 +58,7 @@ export default function Home() {
 
         h1 {
           color: ${colors.primary};
+          font-size: 2rem;
           font-weight: 800;
           margin-bottom: 0.5rem;
         }

@@ -29,6 +29,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
-    'no-console': 2
+    'no-console': 2,
+    camelcase: 0
   }
 }

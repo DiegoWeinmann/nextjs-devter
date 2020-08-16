@@ -34,6 +34,7 @@ export default css`
     border-radius: 10px;
     height: 100%;
     width: 100%;
+    position: relative;
   }
 
   & :global(svg) {

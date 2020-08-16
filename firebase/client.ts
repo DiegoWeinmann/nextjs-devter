@@ -23,7 +23,7 @@ const mapUser = (user: firebase.User): User => {
 
 export const onAuthStateChanged = (onChange: (user: User) => void) => {
   return firebase.auth().onAuthStateChanged(user => {
-    const mappedUser = mapUser(user)
+    const mappedUser = user ? mapUser(user) : null
     onChange(mappedUser)
   })
 }
