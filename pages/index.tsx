@@ -1,26 +1,27 @@
-import AppLayout from 'components/AppLayout';
-import DevterIcon from 'components/Icons/DevterIcon';
-import { colors } from 'styles/theme';
-import { Button } from 'components/Button';
-import { FaGithub } from 'react-icons/fa';
-import { loginWithGithub, onAuthStateChanged } from 'firebase/client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
+import { FaGithub } from 'react-icons/fa'
+import { AppLayout } from 'components/AppLayout'
+import { DevterIcon } from 'components/Icons/DevterIcon'
+import { Button } from 'components/Button'
+import { colors } from 'styles/theme'
+
+import { loginWithGithub, onAuthStateChanged } from 'firebase/client'
 
 export default function Home() {
-  const [user, setUser] = useState<User | null>(null);
-  console.log(user);
+  const [user, setUser] = useState<User | null>(null)
+  console.log(user)
   const handleClick = () => {
-    loginWithGithub();
-  };
+    loginWithGithub()
+  }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged((user) => {
-      setUser(user);
-    });
+    const unsubscribe = onAuthStateChanged(user => {
+      setUser(user)
+    })
     return () => {
-      unsubscribe();
-    };
-  }, []);
+      unsubscribe()
+    }
+  }, [])
 
   return (
     <>
@@ -59,5 +60,5 @@ export default function Home() {
         }
       `}</style>
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-function DevterIcon(props: any) {
+export function DevterIcon(props: any) {
   return (
     <svg fill='currentColor' viewBox='0 0 20 20' {...props}>
       <path
@@ -7,7 +7,5 @@ function DevterIcon(props: any) {
         clipRule='evenodd'
       />
     </svg>
-  );
+  )
 }
-
-export default DevterIcon;

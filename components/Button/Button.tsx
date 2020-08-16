@@ -1,12 +1,12 @@
-import { colors } from 'styles/theme';
+import { colors } from 'styles/theme'
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick: () => void
 }
 
 export function Button({
   children,
-  onClick,
+  onClick
 }: React.PropsWithChildren<ButtonProps>) {
   return (
     <>
@@ -35,5 +35,5 @@ export function Button({
         }
       `}</style>
     </>
-  );
+  )
 }

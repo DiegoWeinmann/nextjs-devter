@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDh8IdLpQoaN2Cu3IK9qkDxqvbUyl2rj24',
@@ -7,28 +7,28 @@ const firebaseConfig = {
   projectId: 'vue-chat-7bde2',
   storageBucket: 'vue-chat-7bde2.appspot.com',
   messagingSenderId: '578255115304',
-  appId: '1:578255115304:web:5de28c8340401cd38fd11d',
-};
+  appId: '1:578255115304:web:5de28c8340401cd38fd11d'
+}
 
-!firebase.apps.length && firebase.initializeApp(firebaseConfig);
+!firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
 const mapUser = (user: firebase.User): User => {
-  const { displayName, email, photoURL } = user;
+  const { displayName, email, photoURL } = user
   return {
     avatar: photoURL,
     username: displayName,
-    email,
-  };
-};
+    email
+  }
+}
 
 export const onAuthStateChanged = (onChange: (user: User) => void) => {
-  return firebase.auth().onAuthStateChanged((user) => {
-    const mappedUser = mapUser(user);
-    onChange(mappedUser);
-  });
-};
+  return firebase.auth().onAuthStateChanged(user => {
+    const mappedUser = mapUser(user)
+    onChange(mappedUser)
+  })
+}
 
 export const loginWithGithub = () => {
-  const githubProvider = new firebase.auth.GithubAuthProvider();
-  return firebase.auth().signInWithPopup(githubProvider);
-};
+  const githubProvider = new firebase.auth.GithubAuthProvider()
+  return firebase.auth().signInWithPopup(githubProvider)
+}
