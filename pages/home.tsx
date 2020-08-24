@@ -30,19 +30,15 @@ export default function Home() {
         </div>
       </AppLayout>
       <style jsx>{`
-        div {
-          padding-top: 49px;
-          padding-bottom: 49px;
-          height: 100%;
-        }
-
         header {
-          display: flex;
           align-items: center;
+          background: #ffffffaa;
+          backdrop-filter: blur(5px);
+          border-bottom: 1px solid #eee;
           height: 49px;
+          display: flex;
           position: sticky;
           top: 0;
-          border-bottom: 1px solid #ccc;
           width: 100%;
         }
 
@@ -52,10 +48,11 @@ export default function Home() {
         }
 
         nav {
-          height: 49px;
-          position: absolute;
+          background: #fff;
           bottom: 0;
-          border-top: 1px solid #ccc;
+          border-top: 1px solid #eee;
+          height: 49px;
+          position: sticky;
           width: 100%;
         }
       `}</style>
