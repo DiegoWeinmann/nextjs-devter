@@ -17,3 +17,8 @@ declare type Devit = {
 }
 
 declare type Timeline = Devit[]
+
+declare type UserStates = {
+  NOT_LOGGED: null
+  NOT_KNOWN: undefined
+}

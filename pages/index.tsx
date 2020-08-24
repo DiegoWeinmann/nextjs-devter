@@ -1,27 +1,38 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { FaGithub } from 'react-icons/fa'
+import Loader from 'react-loader-spinner'
 import { AppLayout } from 'components/AppLayout'
 import { DevterIcon } from 'components/Icons/DevterIcon'
 import { Button } from 'components/Button'
 import { colors } from 'styles/theme'
 
 import { loginWithGithub, onAuthStateChanged } from 'firebase/client'
-import { Avatar } from 'components/Avatar'
+
+const USER_STATES: UserStates = {
+  NOT_LOGGED: null,
+  NOT_KNOWN: undefined
+}
 
 export default function Home() {
+  const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
+
   const handleClick = () => {
     loginWithGithub()
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(user => {
-      setUser(user)
-    })
+    const unsubscribe = onAuthStateChanged(setUser)
+    setUser(undefined)
     return () => {
       unsubscribe()
     }
   }, [])
+
+  useEffect(() => {
+    user && router.replace('/home')
+  }, [user])
 
   return (
     <>
@@ -30,21 +41,14 @@ export default function Home() {
           <DevterIcon fill={colors.primary} width='300' />
           <h1>devter</h1>
           <h2>Talk about development with developers 🙂🙂</h2>
-          {!user && (
+          {user === USER_STATES.NOT_LOGGED && (
             <Button onClick={handleClick}>
               <FaGithub color='#fff' />
               Login with Github
             </Button>
           )}
-          {user && user.avatar && (
-            <div className='avatar'>
-              <Avatar
-                src={user.avatar}
-                alt={user.username}
-                text={user.email}
-                withText
-              />
-            </div>
+          {user === USER_STATES.NOT_KNOWN && (
+            <Loader type='ThreeDots' color={colors.primary} height={80} />
           )}
         </section>
       </AppLayout>
