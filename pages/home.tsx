@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react'
 import { AppLayout } from 'components/AppLayout'
 import { Devit } from 'components/Devit'
+import useUser from 'hooks/useUser'
 
 export default function Home() {
   const [timeline, setTimeline] = useState<Timeline>([])
+  const user = useUser()
 
   useEffect(() => {
-    fetch('/api/statuses/home_timeline')
-      .then(res => res.json())
-      .then(setTimeline)
-      .catch(err => {
-        alert(err.message)
-      })
-  }, [])
+    user &&
+      fetch('/api/statuses/home_timeline')
+        .then(res => res.json())
+        .then(setTimeline)
+        .catch(err => {
+          alert(err.message)
+        })
+  }, [user])
 
   return (
     <>

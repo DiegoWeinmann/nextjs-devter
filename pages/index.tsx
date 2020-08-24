@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { FaGithub } from 'react-icons/fa'
 import Loader from 'react-loader-spinner'
@@ -7,29 +7,15 @@ import { DevterIcon } from 'components/Icons/DevterIcon'
 import { Button } from 'components/Button'
 import { colors } from 'styles/theme'
 
-import { loginWithGithub, onAuthStateChanged } from 'firebase/client'
-
-const USER_STATES: UserStates = {
-  NOT_LOGGED: null,
-  NOT_KNOWN: undefined
-}
+import { loginWithGithub } from 'firebase/client'
+import useUser, { USER_STATES } from 'hooks/useUser'
 
 export default function Home() {
+  const user = useUser()
   const router = useRouter()
-  const [user, setUser] = useState<User | null>(null)
-
   const handleClick = () => {
     loginWithGithub()
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(setUser)
-    setUser(undefined)
-    return () => {
-      unsubscribe()
-    }
-  }, [])
-
   useEffect(() => {
     user && router.replace('/home')
   }, [user])

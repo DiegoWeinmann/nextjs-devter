@@ -1,16 +1,20 @@
 import { colors } from 'styles/theme'
 
 interface ButtonProps {
-  onClick: () => void
+  onClick?: () => void
+  disabled: boolean
 }
 
 export function Button({
   children,
-  onClick
+  onClick,
+  disabled = false
 }: React.PropsWithChildren<ButtonProps>) {
   return (
     <>
-      <button onClick={onClick}>{children}</button>
+      <button onClick={onClick} disabled={disabled}>
+        {children}
+      </button>
       <style jsx>{`
         button {
           display: flex;
@@ -24,6 +28,12 @@ export function Button({
           font-weight: 800;
           padding: 8px 24px;
           transition: opacity 0.3s ease;
+          user-select: none;
+        }
+
+        button[disabled] {
+          pointer-events: none;
+          opacity: 0.2;
         }
 
         button:hover {
